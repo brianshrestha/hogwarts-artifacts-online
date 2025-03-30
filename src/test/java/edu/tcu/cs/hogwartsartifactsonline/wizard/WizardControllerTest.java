@@ -1,6 +1,7 @@
 package edu.tcu.cs.hogwartsartifactsonline.wizard;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.tcu.cs.hogwartsartifactsonline.HogwartsArtifactsOnlineApplication;
 import edu.tcu.cs.hogwartsartifactsonline.artifact.Artifact;
 import edu.tcu.cs.hogwartsartifactsonline.system.StatusCode;
 import edu.tcu.cs.hogwartsartifactsonline.system.exception.ObjectNotFoundException;
@@ -17,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@SpringBootTest
+@SpringBootTest(classes = HogwartsArtifactsOnlineApplication.class)
 @AutoConfigureMockMvc(addFilters = false)
 class WizardControllerTest {
 
@@ -182,6 +184,14 @@ class WizardControllerTest {
 
     @Test
     void testUpdateWizardSuccess() throws Exception {
+        MvcResult result = mockMvc.perform(get("/api/v1/wizards"))
+                .andReturn();
+
+        int status = result.getResponse().getStatus();
+        String content = result.getResponse().getContentAsString();
+        System.out.println("Status = " + status);
+        System.out.println("Response Body = " + content);
+
         WizardDto wizardDto = new WizardDto(null, "Updated wizard name", 0);
 
         Wizard updatedWizard = new Wizard();
