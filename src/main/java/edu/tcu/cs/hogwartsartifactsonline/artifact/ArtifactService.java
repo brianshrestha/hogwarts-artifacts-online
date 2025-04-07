@@ -15,15 +15,15 @@ public class ArtifactService {
 
     private final IdWorker idWorker;
 
+
     public ArtifactService(ArtifactRepository artifactRepository, IdWorker idWorker) {
         this.artifactRepository = artifactRepository;
         this.idWorker = idWorker;
     }
 
-    public Artifact findById(String artifactId){
+    public Artifact findById(String artifactId) {
         return this.artifactRepository.findById(artifactId)
                 .orElseThrow(() -> new ObjectNotFoundException("artifact", artifactId));
-
     }
 
     public List<Artifact> findAll() {
@@ -51,4 +51,5 @@ public class ArtifactService {
                 .orElseThrow(() -> new ObjectNotFoundException("artifact", artifactId));
         this.artifactRepository.deleteById(artifactId);
     }
+
 }

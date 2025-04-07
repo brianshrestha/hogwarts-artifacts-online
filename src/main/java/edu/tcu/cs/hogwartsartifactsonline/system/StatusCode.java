@@ -1,6 +1,5 @@
-
 package edu.tcu.cs.hogwartsartifactsonline.system;
-//in case company has 400 level codes that are nonstandard
+
 public class StatusCode {
 
     public static final int SUCCESS = 200; // Success

@@ -1,7 +1,6 @@
 package edu.tcu.cs.hogwartsartifactsonline.artifact;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.tcu.cs.hogwartsartifactsonline.HogwartsArtifactsOnlineApplication;
 import edu.tcu.cs.hogwartsartifactsonline.artifact.dto.ArtifactDto;
 import edu.tcu.cs.hogwartsartifactsonline.system.StatusCode;
 import edu.tcu.cs.hogwartsartifactsonline.system.exception.ObjectNotFoundException;
@@ -28,8 +27,8 @@ import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@SpringBootTest(classes = HogwartsArtifactsOnlineApplication.class)
-@AutoConfigureMockMvc
+@SpringBootTest
+@AutoConfigureMockMvc(addFilters = false) // Turn off Spring Security
 class ArtifactControllerTest {
 
     @Autowired
@@ -99,7 +98,7 @@ class ArtifactControllerTest {
     }
 
     @Test
-    void tesFindArtifactByIdSuccess() throws Exception {
+    void testFindArtifactByIdSuccess() throws Exception {
         // Given
         given(this.artifactService.findById("1250808601744904191")).willReturn(this.artifacts.get(0));
 
@@ -113,7 +112,7 @@ class ArtifactControllerTest {
     }
 
     @Test
-    void tesFindArtifactByIdNotFound() throws Exception {
+    void testFindArtifactByIdNotFound() throws Exception {
         // Given
         given(this.artifactService.findById("1250808601744904191")).willThrow(new ObjectNotFoundException("artifact", "1250808601744904191"));
 
