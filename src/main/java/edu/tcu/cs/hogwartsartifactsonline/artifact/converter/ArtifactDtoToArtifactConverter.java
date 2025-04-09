@@ -17,4 +17,5 @@ public class ArtifactDtoToArtifactConverter implements Converter<ArtifactDto, Ar
         artifact.setImageUrl(source.imageUrl());
         return artifact;
     }
+
 }

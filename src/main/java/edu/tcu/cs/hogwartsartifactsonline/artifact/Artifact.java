@@ -7,7 +7,6 @@ import jakarta.persistence.ManyToOne;
 
 import java.io.Serializable;
 
-
 @Entity
 public class Artifact implements Serializable {
 
@@ -22,6 +21,7 @@ public class Artifact implements Serializable {
 
     @ManyToOne
     private Wizard owner;
+
 
     public Artifact() {
     }
@@ -65,4 +65,5 @@ public class Artifact implements Serializable {
     public void setOwner(Wizard owner) {
         this.owner = owner;
     }
+
 }

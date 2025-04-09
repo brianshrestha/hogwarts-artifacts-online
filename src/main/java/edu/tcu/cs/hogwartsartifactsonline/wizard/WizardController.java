@@ -73,4 +73,5 @@ public class WizardController {
         this.wizardService.assignArtifact(wizardId, artifactId);
         return new Result(true, StatusCode.SUCCESS, "Artifact Assignment Success");
     }
+
 }

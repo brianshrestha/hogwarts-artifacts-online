@@ -1,7 +1,6 @@
 package edu.tcu.cs.hogwartsartifactsonline.hogwartsuser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.tcu.cs.hogwartsartifactsonline.HogwartsArtifactsOnlineApplication;
 import edu.tcu.cs.hogwartsartifactsonline.hogwartsuser.dto.UserDto;
 import edu.tcu.cs.hogwartsartifactsonline.system.StatusCode;
 import edu.tcu.cs.hogwartsartifactsonline.system.exception.ObjectNotFoundException;
@@ -27,8 +26,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@SpringBootTest(classes = HogwartsArtifactsOnlineApplication.class)
-
+@SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
 class UserControllerTest {
 
