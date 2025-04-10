@@ -1,8 +1,6 @@
 spring:
   profiles:
     active: dev #By default, the active prof is "dev". During production it will be replaced to "prod" due to Azure's env variables.
-  mvc:
-    throw-exception-if-no-handler-found: true
   web:
     resources:
       add-mappings: false
